@@ -1,10 +1,19 @@
 import { useState } from 'react'
+import Home from './Home.jsx'
+import Properties from './Properties.jsx'
+import Plots from './Plots.jsx'
+import Feedback from './Feedback.jsx'
+import Contact from './Contact.jsx'
 import './App.css'
 
 function App() {
   return (
     <>
-      <h1 className='bg-zinc-900 text-3xl text-white'>Hi Tuhin here</h1>
+     <Home />
+     <Properties/>
+     <Plots/>
+     <Feedback/>
+     <Contact/>
     </>
   )
 }
