@@ -11,7 +11,7 @@ export default function Home() {
           <div className='w-full h-1/2 flex justify-center items-top mt-15 bg-red-400'>
              <Search />
           </div>
-          <div className='w-full h-1/2 flex justify-center items-top'>
+          <div className='w-full h-1/2 flex justify-center items-top m-4'>
              <Lists/>
           </div>
 
