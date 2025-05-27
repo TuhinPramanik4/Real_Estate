@@ -11,8 +11,6 @@ function App() {
     <>
      <Home />
      <Properties/>
-     <Plots/>
-     <Feedback/>
      <Contact/>
     </>
   )

@@ -1,0 +1,32 @@
+export const houses = [
+  {
+    house_image: "https://via.placeholder.com/300x200.png?text=House+1",
+    house_name: "Maple Residency",
+    house_address: "123 Oak Street, Springfield",
+    facility: ["Swimming Pool", "Wi-Fi", "Gym", "Garden"]
+  },
+  {
+    house_image: "https://via.placeholder.com/300x200.png?text=House+2",
+    house_name: "Sunset Villa",
+    house_address: "45 Palm Drive, Oceanside",
+    facility: ["Beach View", "Home Theater", "BBQ Area"]
+  },
+  {
+    house_image: "https://via.placeholder.com/300x200.png?text=House+3",
+    house_name: "Hilltop Mansion",
+    house_address: "789 Mountain Lane, Hillview",
+    facility: ["Private Elevator", "Fireplace", "Sauna", "Wine Cellar"]
+  },
+  {
+    house_image: "https://via.placeholder.com/300x200.png?text=House+4",
+    house_name: "Lakeside Cottage",
+    house_address: "22 Willow Road, Lake District",
+    facility: ["Fishing Dock", "Boat House", "Fire Pit"]
+  },
+  {
+    house_image: "https://via.placeholder.com/300x200.png?text=House+5",
+    house_name: "Urban Nest",
+    house_address: "500 Main Street, Downtown",
+    facility: ["Smart Home System", "CCTV", "Rooftop Garden", "Parking Garage"]
+  }
+];
