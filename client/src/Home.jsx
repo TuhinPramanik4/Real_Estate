@@ -8,7 +8,7 @@ export default function Home() {
       
       {/* Center the Search component */}
       <div className="w-full h-[calc(100vh-12vh)] flex flex-col justify-center items-top">
-          <div className='w-full h-1/2 flex justify-center items-top mt-15 bg-red-400'>
+          <div className='w-full h-1/2 flex justify-center items-center mt-15 bg-zinc-600 '>
              <Search />
           </div>
           <div className='w-full h-1/2 flex justify-center items-top m-4'>
