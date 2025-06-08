@@ -57,19 +57,59 @@ function Properties() {
       {/* Right Section */}
       {/* Right section: Floating boxes */}
       <div className="w-[30vw] h-full relative bg-gray-100">
-        <div className="absolute top-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4">
-          <h2 className="text-lg font-bold">Paying Guests</h2>
-        </div>
-        <div className="absolute top-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4">
-          <h2 className="text-lg font-bold">Rent</h2>
-        </div>
-        <div className="absolute bottom-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4">
-          <h2 className="text-lg font-bold">Buy</h2>
-        </div>
-        <div className="absolute bottom-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4">
-          <h2 className="text-lg font-bold">Plots</h2>
-        </div>
-      </div>
+  {/* Paying Guests */}
+  <div className="absolute top-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
+    <h2 className="text-lg font-bold">Paying Guests</h2>
+    <div className="flex-1 flex items-center justify-center">
+      <img src="/pg.png" alt="Paying Guests" className="w-full h-auto object-contain" />
+    </div>
+    <div className="flex justify-end">
+      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      →
+    </a>
+    </div>
+  </div>
+
+  {/* Rent */}
+  <div className="absolute top-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
+    <h2 className="text-lg font-bold">Rent</h2>
+    <div className="flex-1 flex items-center justify-center">
+      <img src="/rent.png" alt="Rent" className="w-full h-auto object-contain" />
+    </div>
+    <div className="flex justify-end">
+      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      →
+    </a>
+    </div>
+  </div>
+
+  {/* Buy */}
+  <div className="absolute bottom-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
+    <h2 className="text-lg font-bold">Buy</h2>
+    <div className="flex-1 flex items-center justify-center">
+      <img src="/buy.png" alt="Buy" className="w-full h-auto object-contain" />
+    </div>
+    <div className="flex justify-end">
+     <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      →
+    </a>
+    </div>
+  </div>
+
+  {/* Plots */}
+  <div className="absolute bottom-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
+    <h2 className="text-lg font-bold">Plots</h2>
+    <div className="flex-1 flex items-center justify-center">
+      <img src="/plots.png" alt="Plots" className="w-full h-auto object-contain" />
+    </div>
+    <div className="flex justify-end">
+      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      →
+    </a>
+    </div>
+  </div>
+</div>
+
        </div>
   );
 }
