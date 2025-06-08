@@ -27,11 +27,21 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage, fileFilter });
 
+router.get("/api/properties", async (req, res) => {
+  try {
+    const properties = await Property.find().sort({ createdAt: -1 }); // latest first
+    res.status(200).json(properties);
+  } catch (error) {
+    console.error("Error fetching properties:", error);
+    res.status(500).json({ error: "Server error while fetching properties" });
+  }
+});
 // POST /api/properties
 router.post("/api/properties", upload.single("image"), async (req, res) => {
   try {
     const { title, price, location, description, category } = req.body;
-    const imageUrl = req.file.path;
+
+    const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
 
     const property = new Property({
       title,
@@ -48,6 +58,5 @@ router.post("/api/properties", upload.single("image"), async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 export default router;
