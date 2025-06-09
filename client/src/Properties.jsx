@@ -1,117 +1,108 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
-import Card from "./property_component/Card";
 
-function Properties() {
-  const [properties, setProperties] = useState([]);
-  const [index, setIndex] = useState(0);
+const testimonials = [
+  {
+    name: "Alice Johnson",
+    role: "CEO, TechCorp",
+    text: "This service completely transformed our workflow. Highly recommend to anyone looking for reliability and excellence.",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+  {
+    name: "Mark Wilson",
+    role: "Freelancer",
+    text: "Fast, efficient, and the team really understands customer needs. Support is also top-notch!",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Sophie Lee",
+    role: "Product Manager",
+    text: "The user interface is so intuitive and the performance is excellent. My productivity has skyrocketed.",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+];
 
-  useEffect(() => {
-    axios.get("http://localhost:8000/api/properties") // change to your deployed URL on Vercel
-      .then((res) => setProperties(res.data))
-      .catch((err) => console.error("Fetch Error:", err));
-  }, []);
+export default function Properties() {
+  const slideRightToLeft = {
+    animate: {
+      x: ["100%", "-100%"],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 30,
+        ease: "linear",
+      },
+    },
+  };
 
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % 5); // or max count per category
-    }, 3000);
-    return () => clearInterval(slideInterval);
-  }, []);
-
-  const filterByCategory = (category) =>
-    properties.filter((p) => p.category.toLowerCase() === category);
+  const slideLeftToRight = {
+    animate: {
+      x: ["-100%", "100%"],
+      transition: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 30,
+        ease: "linear",
+      },
+    },
+  };
 
   return (
-    <div className="w-full h-screen bg-gray-400 flex">
-      {/* Left Section */}
-      <div className="w-[70vw] h-full p-6 bg-pink-300 flex flex-col gap-4 overflow-y-scroll">
-        {["buy", "rent"].map((type) => (
-          <div key={type}>
-            <h1 className="text-3xl font-bold text-white capitalize">
-              Available for {type}
-            </h1>
-            <div className="overflow-hidden w-full h-[40vh]">
-              <motion.div
-                className="flex"
-                animate={{ x: `-${index * 100}%` }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              >
-                {filterByCategory(type).map((house, idx) => (
-                  <div key={idx} className="min-w-full px-2">
-                    <Card house={{
-                      house_image: house.imageUrl,
-                      house_name: house.title,
-                      house_address: house.location,
-                      facility: [house.description] // simplified
-                    }} />
-                  </div>
-                ))}
-              </motion.div>
-            </div>
-          </div>
-        ))}
+    <div className="w-full h-3/4 bg-white flex flex-col items-center justify-center py-12 px-4">
+      <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+        What Our Customers Say
+      </h2>
+
+      <div className="relative w-full max-w-7xl h-[500px] overflow-hidden rounded-2xl border border-gray-200 shadow-xl bg-gray-50">
+        {/* Top half: Right to Left */}
+        <div className="absolute top-0 w-full h-1/2 overflow-hidden">
+          <motion.div
+            {...slideRightToLeft}
+            className="flex items-center"
+            style={{ width: `${testimonials.length * 22}rem` }}
+          >
+            {testimonials.map((t, i) => (
+              <div key={`rtl-${i}`} className="w-80 mx-6">
+                <TestimonialCard testimonial={t} />
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bottom half: Left to Right */}
+        <div className="absolute bottom-0 w-full h-1/2 overflow-hidden">
+          <motion.div
+            {...slideLeftToRight}
+            className="flex items-center"
+            style={{ width: `${testimonials.length * 22}rem` }}
+          >
+            {testimonials.map((t, i) => (
+              <div key={`ltr-${i}`} className="w-80 mx-6">
+                <TestimonialCard testimonial={t} />
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
-
-      {/* Right Section */}
-      {/* Right section: Floating boxes */}
-      <div className="w-[30vw] h-full relative bg-gray-100">
-  {/* Paying Guests */}
-  <div className="absolute top-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
-    <h2 className="text-lg font-bold">Paying Guests</h2>
-    <div className="flex-1 flex items-center justify-center">
-      <img src="/pg.png" alt="Paying Guests" className="w-full h-auto object-contain" />
     </div>
-    <div className="flex justify-end">
-      <a href="/pg" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
-      →
-    </a>
-    </div>
-  </div>
-
-  {/* Rent */}
-  <div className="absolute top-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
-    <h2 className="text-lg font-bold">Rent</h2>
-    <div className="flex-1 flex items-center justify-center">
-      <img src="/rent.png" alt="Rent" className="w-full h-auto object-contain" />
-    </div>
-    <div className="flex justify-end">
-      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
-      →
-    </a>
-    </div>
-  </div>
-
-  {/* Buy */}
-  <div className="absolute bottom-2 left-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
-    <h2 className="text-lg font-bold">Buy</h2>
-    <div className="flex-1 flex items-center justify-center">
-      <img src="/buy.png" alt="Buy" className="w-full h-auto object-contain" />
-    </div>
-    <div className="flex justify-end">
-     <a href="/buy" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
-      →
-    </a>
-    </div>
-  </div>
-
-  {/* Plots */}
-  <div className="absolute bottom-2 right-2 w-[12vw] h-[40vh] bg-white m-4 shadow-lg rounded-lg p-4 flex flex-col justify-between">
-    <h2 className="text-lg font-bold">Plots</h2>
-    <div className="flex-1 flex items-center justify-center">
-      <img src="/plots.png" alt="Plots" className="w-full h-auto object-contain" />
-    </div>
-    <div className="flex justify-end">
-      <a href="/plot" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
-      →
-    </a>
-    </div>
-  </div>
-</div>
-
-       </div>
   );
 }
 
-export default Properties;
+function TestimonialCard({ testimonial }) {
+  return (
+    <div className="w-80 p-6 bg-white rounded-xl shadow-md border border-gray-200 flex flex-col justify-between h-full">
+      <p className="text-gray-700 italic mb-6">“{testimonial.text}”</p>
+      <div className="flex items-center gap-4">
+        <img
+          src={testimonial.avatar}
+          alt={testimonial.name}
+          className="w-12 h-12 rounded-full object-cover"
+        />
+        <div>
+          <h4 className="text-gray-900 font-semibold">{testimonial.name}</h4>
+          <p className="text-gray-500 text-sm">{testimonial.role}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
