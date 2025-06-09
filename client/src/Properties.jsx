@@ -64,7 +64,7 @@ function Properties() {
       <img src="/pg.png" alt="Paying Guests" className="w-full h-auto object-contain" />
     </div>
     <div className="flex justify-end">
-      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      <a href="/pg" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
       →
     </a>
     </div>
@@ -90,7 +90,7 @@ function Properties() {
       <img src="/buy.png" alt="Buy" className="w-full h-auto object-contain" />
     </div>
     <div className="flex justify-end">
-     <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+     <a href="/buy" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
       →
     </a>
     </div>
@@ -103,7 +103,7 @@ function Properties() {
       <img src="/plots.png" alt="Plots" className="w-full h-auto object-contain" />
     </div>
     <div className="flex justify-end">
-      <a href="/rent" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
+      <a href="/plot" className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 hover:bg-green-600 text-white shadow-md transition duration-200 absolute bottom-3 left-1/2 -translate-x-1/2">
       →
     </a>
     </div>
