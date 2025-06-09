@@ -11,7 +11,7 @@ const Search = () => {
   };
 
   return (
-    <div className="w-[90vw] max-w-5xl mx-auto mt-12 bg-white shadow-2xl rounded-3xl p-8 flex flex-col md:flex-row gap-6 items-center justify-between">
+    <div className=" text-black w-[90vw] max-w-5xl mx-auto mt-12 bg-white shadow-2xl rounded-3xl p-8 flex flex-col md:flex-row gap-6 items-center justify-between">
       
       {/* City Input */}
       <div className="flex items-center gap-2 w-full md:w-1/3">
@@ -26,7 +26,7 @@ const Search = () => {
       </div>
 
       {/* Type Selector */}
-      <div className="flex items-center gap-2 w-full md:w-1/4">
+      <div className="flex items-center gap-2 w-full md:w-1/4 text-black">
         <SearchIcon className="text-blue-600" />
         <select
           value={type}
@@ -41,7 +41,7 @@ const Search = () => {
       </div>
 
       {/* Budget Selector */}
-      <div className="flex items-center gap-2 w-full md:w-1/4">
+      <div className="flex items-center gap-2 w-full md:w-1/4 text-black">
         <Wallet className="text-blue-600" />
         <select
           value={budget}

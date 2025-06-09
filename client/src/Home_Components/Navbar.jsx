@@ -1,35 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // For mobile menu icons
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="w-full h-[12vh] text-white bg-black shadow flex items-center">
-  {/* Left: Logo + Brand */}
-  <div className='w-1/4 h-full  flex  justify-center items-center'>
-                <div className='w-1/3 h-full flex justify-center items-center '>
-                <img src="./assets/logo" alt="logo" />
-                </div>
-                <div className='w-2/3 text-2xl h-full flex justify-center items-center'>
-                <h2>Star Properties</h2>
-                </div>
+    <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-white/60 shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo + Brand */}
+        <div className="flex items-center gap-3">
+          <img src="/assets/logo.png" alt="logo" className="h-10 w-10 object-contain" />
+          <h2 className="text-2xl font-semibold text-gray-800">Star Properties</h2>
         </div>
 
-  {/* Right: Navigation */}
-  <div className="w-2/4 h-full flex items-center justify-center   bg-black">
-    <ul className="flex  text-lg font-medium gap-30 text-white">
-      <li className="hover:text-blue-600 transition-colors cursor-pointer">Buy</li>
-      <li className="hover:text-blue-600 transition-colors cursor-pointer">Rent</li>
-      <li className="hover:text-blue-600 transition-colors cursor-pointer">PG</li>
-      <li className="hover:text-blue-600 transition-colors cursor-pointer">Plots</li>
-    </ul>
-  </div>
-  <div className='w-1/4 h-full  flex items-center justify-center   bg-blacl'>
-   <button className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-          Sign In
-        </button></div>
-</div>
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-10 text-gray-800 font-medium">
+          <a href="/buy" className="hover:text-blue-600 transition">Buy</a>
+          <a href="/rent" className="hover:text-blue-600 transition">Rent</a>
+          <a href="/pg" className="hover:text-blue-600 transition">PG</a>
+          <a href="/plots" className="hover:text-blue-600 transition">Plots</a>
+        </nav>
 
+        {/* Sign In Button */}
+        <div className="hidden md:block">
+          <button className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">
+            Sign In
+          </button>
+        </div>
 
-  )
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isOpen && (
+        <div className="md:hidden px-6 pb-4 pt-2 space-y-3 bg-white/80 backdrop-blur-md text-gray-800">
+          <a href="/buy" className="block hover:text-blue-600">Buy</a>
+          <a href="/rent" className="block hover:text-blue-600">Rent</a>
+          <a href="/pg" className="block hover:text-blue-600">PG</a>
+          <a href="/plots" className="block hover:text-blue-600">Plots</a>
+          <button className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+            Sign In
+          </button>
+        </div>
+      )}
+    </header>
+  );
 }
 
-export default Navbar
+export default Navbar;

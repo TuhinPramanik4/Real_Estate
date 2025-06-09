@@ -9,7 +9,7 @@ const Lists = () => {
   ];
 
   return (
-    <div className="w-full min-h-[80vh] flex flex-wrap justify-center items-center gap-8 p-6 bg-gradient-to-b from-white to-gray-100">
+    <div className="w-full min-h-[80vh] flex flex-wrap justify-center items-center gap-16 p-6 bg-gradient-to-b from-white to-gray-100">
       {options.map((item, index) => (
         <div
           key={index}
