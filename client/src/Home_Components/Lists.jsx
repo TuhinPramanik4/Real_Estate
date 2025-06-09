@@ -1,49 +1,37 @@
 import React from 'react'
+import { Home, Building, BedDouble } from 'lucide-react' // Optional icons
 
-function Lists() {
+const Lists = () => {
+  const options = [
+    { title: 'Buy', path: '/buy', icon: <Home size={36} /> },
+    { title: 'PGs', path: '/pg', icon: <BedDouble size={36} /> },
+    { title: 'Rent', path: '/rent', icon: <Building size={36} /> }
+  ];
+
   return (
-    <div className='w-full h-full flex justify-center items=center gap-30  '>
-      <div className='w-[20vw] h-[90%] '>
-        <div className='w-full h-2/3 flex justify-center items-center text-3xl '>
-          <h1>Buy</h1>
-        </div>
-        <div className='w-full h-1/3 bg-zinc-400 flex justify-center items-center'>
-          <button onClick={() => { window.location.href = "/buy"; }}
+    <div className="w-full min-h-[80vh] flex flex-wrap justify-center items-center gap-8 p-6 bg-gradient-to-b from-white to-gray-100">
+      {options.map((item, index) => (
+        <div
+          key={index}
+          className="w-[250px] h-[300px] bg-white rounded-3xl shadow-lg flex flex-col justify-between items-center p-6 transition-transform hover:scale-105"
+        >
+          {/* Icon */}
+          <div className="text-blue-600">{item.icon}</div>
 
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition "
-          >
-            Search More
-          </button>
-        </div>
-      </div>
-      <div className='w-[20vw] h-[90%]'>
-        <div className='w-full h-2/3 flex justify-center items-center text-3xl '>
-          <h1> PGs</h1>
-        </div>
-        <div className='w-full h-1/3 bg-zinc-400 flex justify-center items-center'>
+          {/* Title */}
+          <h1 className="text-3xl font-semibold text-gray-800">{item.title}</h1>
+
+          {/* Button */}
           <button
-            onClick={() => { window.location.href = "/pg"; }}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition  "
+            onClick={() => { window.location.href = item.path }}
+            className="mt-4 bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition"
           >
             Search More
           </button>
         </div>
-      </div>
-      <div className='w-[20vw] h-[90%] '>
-        <div className='w-full h-2/3 flex justify-center items-center text-3xl '>
-          <h1> Rent</h1>
-        </div>
-        <div className='w-full h-1/3 bg-zinc-400 flex justify-center items-center'>
-          <button
-          onClick={() => { window.location.href = "/rent"; }}
-            className="bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition "
-          >
-            Search More
-          </button>
-        </div>
-      </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default Lists
+export default Lists;
